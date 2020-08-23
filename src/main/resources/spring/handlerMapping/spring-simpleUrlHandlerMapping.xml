@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    <!-- 设置相关的控制类 -->
+	<bean id="demoController" class="com.xiu.web.handlerMapping.DemoController"/>
+	<bean id="simpleController"  class="com.xiu.web.handlerMapping.SimpleController"/>
+
+	<!-- SimpleHandlerMapping的使用方式 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<!-- 第一种方式使用其构造函数SimpleUrlHandlerMapping(Map<String, ?> urlMap)设置url和handler配置-->
+		<constructor-arg name="urlMap">
+			<map>
+			 <entry key="/test" value-ref="testController" />
+		   </map>
+		</constructor-arg>
+		<!-- 第二种方式使用其setMappings(Properties mappings)方法设置url和handler配置-->
+         <property name="mappings">
+			 <props>
+				 <prop key="/demo">demoController</prop>
+			 </props>
+		 </property>
+		<!-- 第三方式使用其setUrlMap(Map<String, ?> urlMap)-->
+		<property name="urlMap">
+			<map>
+				<entry key="/simple" value-ref="simpleController" />
+			</map>
+		</property>
+		<!--第四种方式 在mappings的方式上进行扩展 使用PropertiesFactoryBean实例来引入配置文件信息
+		 便于映射关系和处理器映射器实例配置和url/handler映射关系分开配置 相对灵活-->
+<!--		<property name="mappings">-->
+<!--			<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">-->
+<!--				<property name="location">-->
+<!--					<value>urlMap.properties</value> &lt;!&ndash; 此时urlMap.properties文件应放在WebRoot目录下! &ndash;&gt;-->
+<!--				</property>-->
+<!--			</bean>-->
+<!--		</property>-->
+	</bean>
+
+</beans>

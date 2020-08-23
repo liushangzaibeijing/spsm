@@ -1,0 +1,14 @@
+com\xiu\entity\BookExample$Criteria.class
+com\xiu\dao\BookMapper.class
+com\xiu\dao\MovieMapper.class
+com\xiu\entity\MovieExample$Criteria.class
+com\xiu\web\DemoController.class
+com\xiu\entity\BaseModel.class
+com\xiu\entity\BookExample.class
+com\xiu\entity\MovieExample$GeneratedCriteria.class
+com\xiu\entity\MovieExample$Criterion.class
+com\xiu\entity\Movie.class
+com\xiu\entity\MovieExample.class
+com\xiu\entity\Book.class
+com\xiu\entity\BookExample$GeneratedCriteria.class
+com\xiu\entity\BookExample$Criterion.class
