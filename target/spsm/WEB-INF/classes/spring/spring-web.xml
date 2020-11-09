@@ -10,12 +10,40 @@
 	http://www.springframework.org/schema/mvc
 	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
+<!--	<mvc:annotation-driven/>-->
 	<!-- 引入SimpleUrlHandlerMapping对应的适配器 -->
-	<import resource="handlerMapping/spring-simpleUrlHandlerMapping.xml" />
-
-
+<!--	<import resource="handlerMapping/spring-simpleUrlHandlerMapping.xml" />-->
 	<!-- 引入BeanNameUrlHandlerMapping对应的适配器 -->
-	<import resource="handlerMapping/spring-beanNameUrlHandlerMapping.xml" />
+<!--	<import resource="handlerMapping/spring-beanNameUrlHandlerMapping.xml" />-->
+
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+<!--		 设置支持的方法 只有满足这里列举的请求 才会进行处理否则抛出异常-->
+<!--		<property name="supportedMethods">-->
+<!--			<set>-->
+<!--               <value>POST</value>-->
+<!--			</set>-->
+<!--		</property>-->
+		<!-- 设置请求必须包含session 否则抛出异常 -->
+<!--		<property name="requireSession" value="true" />-->
+		<!-- 设置缓存属性-->
+		<property name="cacheSecondsForSessionAttributeHandlers" value="1000"/>
+		<property name="messageConverters">
+			<list>
+				<ref bean="stringHttpMessageConverter"/>
+				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+			</list>
+		</property>
+	</bean>
+
+<!--	<bean class="com.xiu.HandlerAdapter.MyRequestHandlerMappingAdapter">-->
+        <!-- 设置缓存的秒数-->
+<!--		<property name="cacheSecondsForSessionAttributeHandlers" value="1000"/>-->
+<!--	</bean>-->
+	<!-- String类型解析器，允许直接返回String类型的消息 -->
+	<bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter"/>
+
 
 	<!-- 2.静态资源默认servlet配置
 		(1)加入对静态资源的处理：js,gif,png

@@ -13,7 +13,7 @@
 		 -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:spring/spring-*.xml</param-value>
+			<param-value>classpath:spring/spring-web.xml</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
@@ -25,7 +25,7 @@
 	<!--ServletContext 对应的配置生成Root ApplicationContext实例-->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring/spring-*.xml</param-value>
+		<param-value>classpath:spring/spring-dao.xml,classpath:spring/spring-service.xml</param-value>
 	</context-param>
 	
 	<listener>

@@ -1,6 +1,9 @@
 package com.xiu.mvc;
 
 import org.junit.Test;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,6 +44,8 @@ public class DispatcherServlettest  {
         };
         //frameworkServlet.initServletBean();
 
+      //  XmlBeanFactory xmlBeanFactory = new XmlBeanFactory();
+       // xmlBeanFactory.getBean();
 
     }
 

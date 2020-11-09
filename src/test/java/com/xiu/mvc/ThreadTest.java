@@ -16,6 +16,15 @@ public class ThreadTest {
       }
     }
 
+    @Test
+    public void testTwo(){
+        int a = 1;
+        int c = 1;
+        //int b = a++ + ++a;
+        int b =  a+++c++;
+        System.out.println("b:" + b);
+
+    }
     class TestTask implements Runnable{
 
         @Override
