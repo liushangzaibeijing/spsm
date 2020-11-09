@@ -1,7 +1,9 @@
 package com.xiu.entity;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-
+@XmlRootElement(name = "user")
 public class Book extends BaseModel implements Serializable{
     /**
      * 主键
@@ -61,6 +63,7 @@ public class Book extends BaseModel implements Serializable{
         this.id = id;
     }
 
+    @XmlElement
     public String getName() {
         return name;
     }
@@ -68,7 +71,7 @@ public class Book extends BaseModel implements Serializable{
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
     }
-
+    @XmlElement
     public String getAuthor() {
         return author;
     }
@@ -76,7 +79,6 @@ public class Book extends BaseModel implements Serializable{
     public void setAuthor(String author) {
         this.author = author == null ? null : author.trim();
     }
-
     public String getTranslator() {
         return translator;
     }
@@ -84,7 +86,7 @@ public class Book extends BaseModel implements Serializable{
     public void setTranslator(String translator) {
         this.translator = translator == null ? null : translator.trim();
     }
-
+    @XmlElement
     public String getPublisHouse() {
         return publisHouse;
     }
@@ -92,7 +94,6 @@ public class Book extends BaseModel implements Serializable{
     public void setPublisHouse(String publisHouse) {
         this.publisHouse = publisHouse == null ? null : publisHouse.trim();
     }
-
     public String getPublicationDate() {
         return publicationDate;
     }
@@ -100,7 +101,6 @@ public class Book extends BaseModel implements Serializable{
     public void setPublicationDate(String publicationDate) {
         this.publicationDate = publicationDate == null ? null : publicationDate.trim();
     }
-
     public String getPrice() {
         return price;
     }
@@ -108,7 +108,6 @@ public class Book extends BaseModel implements Serializable{
     public void setPrice(String price) {
         this.price = price == null ? null : price.trim();
     }
-
     public Double getScore() {
         return score;
     }
@@ -116,7 +115,6 @@ public class Book extends BaseModel implements Serializable{
     public void setScore(Double score) {
         this.score = score;
     }
-
     public Integer getEvaluateNumber() {
         return evaluateNumber;
     }
@@ -124,7 +122,6 @@ public class Book extends BaseModel implements Serializable{
     public void setEvaluateNumber(Integer evaluateNumber) {
         this.evaluateNumber = evaluateNumber;
     }
-
     public String getPicture() {
         return picture;
     }
@@ -132,7 +129,6 @@ public class Book extends BaseModel implements Serializable{
     public void setPicture(String picture) {
         this.picture = picture == null ? null : picture.trim();
     }
-
     public String getDescption() {
         return descption;
     }
@@ -140,7 +136,6 @@ public class Book extends BaseModel implements Serializable{
     public void setDescption(String descption) {
         this.descption = descption == null ? null : descption.trim();
     }
-
     public String getTag() {
         return tag;
     }
