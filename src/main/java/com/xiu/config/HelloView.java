@@ -15,8 +15,7 @@ import java.util.Map;
  * @Author xieqx
  * @Date 2020/11/9 17:19
  **/
-@Component
-public class Hello implements View {
+public class HelloView implements View {
     /**
      * 该视图的media类型
      * @return

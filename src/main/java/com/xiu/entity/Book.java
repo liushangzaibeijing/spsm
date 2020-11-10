@@ -63,7 +63,6 @@ public class Book extends BaseModel implements Serializable{
         this.id = id;
     }
 
-    @XmlElement
     public String getName() {
         return name;
     }
@@ -71,7 +70,6 @@ public class Book extends BaseModel implements Serializable{
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
     }
-    @XmlElement
     public String getAuthor() {
         return author;
     }
@@ -86,7 +84,6 @@ public class Book extends BaseModel implements Serializable{
     public void setTranslator(String translator) {
         this.translator = translator == null ? null : translator.trim();
     }
-    @XmlElement
     public String getPublisHouse() {
         return publisHouse;
     }

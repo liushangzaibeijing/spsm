@@ -20,7 +20,8 @@ public class BeanNameViewController {
     @RequestMapping(value = "hello", method = RequestMethod.GET)
     public String toHello(HttpServletRequest request){
         System.out.println("使用BeanNameViewResolver解析器 获取解析视图");
-        return "hello";
+        //返回时String 类型的View 对象
+        return "helloView";
     }
 
     @RequestMapping(value = "jstlView", method = RequestMethod.GET)

@@ -6,12 +6,11 @@
     <!--视图解析 -->
 	<!--1、BeanNameViewResolver视图解析器 根据controller类的方法返回的String
 	 类型的viewName  作为bean的name从spring中获取 View对象调用其的render()方法 -->
-<!--	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">-->
-<!--	</bean>-->
-<!--	<bean id="jstlView" class="org.springframework.web.servlet.view.JstlView">-->
-<!--		<property name="url"  value="/jspHello"></property>-->
-<!--	</bean>-->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	</bean>
 
+    <!--配置view对象-->
+    <bean id="helloView" class="com.xiu.config.HelloView"/>
 
 	<!--2、ContentNegotiatingViewResolver视图解析器
 	    根据http请求头中的context_type(media)来获取最符合的视图进行数据渲染
@@ -33,8 +32,12 @@
 
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver" >
 		<property name="order" value="0" />
+		<!--spring5.0以后 使用contentNegotiationManagerFactoryBean 进行详细的配置-->
  		<property name="contentNegotiationManager"  ref="contentNegotiationManagerFactoryBean"/>
-
+        <!-- 设置默认的视图对象，ContentNegotiatingViewResolver 根据类型匹配view的时候有两种形式
+           1、使用视图解析器viewResolvers 来获取对用的view对象
+           2、defaultViews 列出所有的view对象
+        -->
 		<property name="defaultViews">
 			<list>
 				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"></bean>
@@ -44,8 +47,8 @@
 							<property name="marshallerProperties">
 								<map>
 									<entry key="jaxb.encoding" value="UTF-8"></entry>
-									<!-- 放置xml自动缩进属性 -->
-									<entry key="jaxb.formatted.output" value="true"></entry>
+<!--									&lt;!&ndash; 放置xml自动缩进属性 &ndash;&gt;-->
+<!--									<entry key="jaxb.formatted.output" value="true"></entry>-->
 								</map>
 							</property>
 							<property name="packagesToScan" value="com.xiu.entity"/>
@@ -56,15 +59,16 @@
 		</property>
 	</bean>
 
+	<!--具体启用上面的哪些方式由该bean来决定 -->
 	<bean id="contentNegotiationManagerFactoryBean" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean" >
 		<!--是否启用参数支持 默认为true 表明可以使用方式三-->
 		<property name="favorParameter" value="true" />
 		<!--是否忽略 request的header的accept true忽略 无法使用方式二-->
 		<property name="ignoreAcceptHeader" value="false" />
 
-		<!--是否忽略 request的header的accept true忽略 无法使用方式二-->
 		<property name="mediaTypes">
 			<map>
+                <entry key="html" value="text/html" />
 				<entry key="json" value="application/json" />
 				<entry key="xml" value="application/xml"/>                     </map>
 		</property>
