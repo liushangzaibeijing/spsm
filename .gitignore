@@ -1,0 +1,16 @@
+/target/
+/.settings/
+.project
+.classpath
+/logs/
+/.dubbo/
+mus-oms/.tern-project
+*.log
+pls-oms/.dubbo/pls-oms.cache
+pls-oms/.dubbo/pls-oms.cache.lock
+.idea/
+*.iml
+*.iws
+*.ipr
+*.zip
+*.tmp
