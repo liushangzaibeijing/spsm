@@ -15,7 +15,7 @@
 
 
 	<!-- 扫描service包下所有使用注解的类型 -->
-<!--	<context:component-scan base-package="com.xiu.service" />-->
+	<context:component-scan base-package="com.xiu" />
 
 	<!--设置aop 自动代理 -->
 	<aop:aspectj-autoproxy />
