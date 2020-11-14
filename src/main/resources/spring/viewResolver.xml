@@ -75,15 +75,39 @@
 
 	</bean>
 
+	<!-- 针对freemarker的视图配置 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="cache" value="true" />
+		<property name="prefix" value="" />
+		<property name="suffix" value=".ftl" />
+		<property name="contentType" value="text/html;charset=UTF-8"></property>
+		<property name="requestContextAttribute" value="request" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="exposeRequestAttributes" value="true" />
+		<property name="exposeSessionAttributes" value="true" />
+	</bean>
+
+	<!-- freeMarkerViewResolver的配置信息设置 没有该配置spring无法实例化 -->
+	<bean id="freemarkerConfig"
+		  class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="WEB-INF/ftl/" />
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="template_update_delay">0</prop>
+				<prop key="default_encoding">UTF-8</prop>
+				<prop key="number_format">0.##########</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="classic_compatible">true</prop>
+				<prop key="template_exception_handler">ignore</prop>
+			</props>
+		</property>
+	</bean>
+
 	<!--配置jsp相关的视图解析器-->
-<!--	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-<!--	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />-->
-<!--	<property name="prefix" value="/WEB-INF/jsp/" />-->
-<!--	<property name="suffix" value=".jsp" />-->
-<!--	</bean>-->
-
-	<!--配置处理器json相关的视图解析器-->
-	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
-
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+	    <property name="prefix" value="/WEB-INF/jsp/" />
+	    <property name="suffix" value=".jsp" />
+	</bean>
 
 </beans>
