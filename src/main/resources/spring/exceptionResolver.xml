@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--异常解析处理器 -->
+    <!--处理请求抛出的使用@ResponseStatus注解修饰的异常类 如果配置多个异常处理类为了优先使用需要将其放到开头 -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver" />
+
+	<!-- DefaultHandlerExceptionResolver 默认异常处理器 -->
+	<bean  class="org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver" >
+	</bean>
+
+	<!-- SimpleMappingExceptionResolver 异常和视图映射异常处理器 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<!-- 默认异常页面 在无法匹配到具体异常对应错误页面后使用该错误页面 -->
+		<property name="defaultErrorView" value="error/index"/>
+        <!-- 排除指定异常处理，在excludedExceptions该数组中的异常不会被处理 -->
+		<property name="excludedExceptions">
+			<array>
+				<value>java.lang.NullPointerException</value>
+			</array>
+		</property>
+		<!-- 显示的定义相关异常处理 后返回的对应页面  可以支持精确异常和模糊异常匹配
+		   对于有继承关系的异常 如果直接子类没有匹配到对应错误页面 则查看其父类异常
+		-->
+		<property name="exceptionMappings">
+			<props>
+                <!-- 精确匹配 -->
+				<prop key="ClassCastException">error/classCastExp</prop>
+                <!-- FileNotFoundException是IOException的子类 如果成行抛出FileNotFoundException
+                 但是没有该异常对应的页面展示则会继续查找父类IOException  -->
+				<prop key="IOException">error/ioExp</prop>
+				<!-- 模糊匹配 -->
+				<prop key="*ServiceException">error/index</prop>
+			</props>
+		</property>
+	</bean>
+
+
+</beans>
