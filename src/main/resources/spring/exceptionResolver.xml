@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+	<import resource="messageConverter.xml"/>
+
+    <!-- 支持@ExceptionHandler 的handlerMethod异常处理-->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver">
+		<!-- 踩坑总结，笔者没有使用<mvc:annotation-driven />进行全局的配置类型解析 则会出现异常处理乱码情况
+		  这里配置直接返回string 类型的和bean是实体序列化类型解析-->
+		<property name="messageConverters">
+			<util:list id="beanList">
+				<ref bean="stringHttpMessageConverter"/>
+				<!--<ref bean="byteArrayHttpMessageConverter" />-->
+				<ref bean="mappingJacksonHttpMessageConverter" />
+			</util:list>
+		</property>
+	</bean>
+
+    <!-- 全局异常代理增强 -->
+    <!--<bean class="com.xiu.exception.config.ServiceExceptionHandlerAdvice" />-->
+
     <!--异常解析处理器 -->
     <!--处理请求抛出的使用@ResponseStatus注解修饰的异常类 如果配置多个异常处理类为了优先使用需要将其放到开头 -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver" />

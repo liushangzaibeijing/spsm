@@ -1,5 +1,6 @@
 package com.xiu.web.exceptionResolver;
 
+import com.xiu.entity.Book;
 import com.xiu.exception.AServiceException;
 import com.xiu.exception.BServiceException;
 import com.xiu.exception.CServiceException;
@@ -62,14 +63,20 @@ public class ExceptionHandlerResolverController {
 //        FileInputStream in = new FileInputStream(file);
         //测试异常的模糊匹配
         if(type.equals("A")){
-           throw new AServiceException();
+           throw new AServiceException("512","服务器内部错误");
        }
         if(type.equals("B")){
-            throw new BServiceException();
+            throw new BServiceException("513","服务器无响应");
         }
         if(type.equals("C")){
-            throw new CServiceException();
+            throw new CServiceException("514","服务器不正常");
         }
         return "helloView";
+    }
+
+    @RequestMapping(value = "charSet", method = RequestMethod.GET)
+    @ResponseBody
+    public String charSet() {
+        return  "我的团长我的团";
     }
 }

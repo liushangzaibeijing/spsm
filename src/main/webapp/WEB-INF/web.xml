@@ -27,6 +27,17 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:spring/webmvc.xml</param-value>
 		</init-param>
+		<multipart-config>
+			<!-- 文件上传的临时目录 -->
+			<location>C:/Users/Lenovo/.IntelliJIdea2018.3/tmp</location>
+			<!-- 单个上传文件的最大值 默认-1无限制 单位MB -->
+			<max-file-size>10240</max-file-size>
+			<!-- 一个请求上传所有文件综合的最大值 默认-1无限制 单位MB -->
+			<max-request-size>102400</max-request-size>
+			<!-- 设置不写入磁盘的最大数据量 文件上传会将文件作为临时文件写入磁盘 如果不超过这个限制则不写入临时文件
+			保存在内存中-->
+			<file-size-threshold>1</file-size-threshold>
+		</multipart-config>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>mvc-dispatcher</servlet-name>

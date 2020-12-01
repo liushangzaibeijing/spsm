@@ -12,4 +12,28 @@ import org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionRes
  **/
 @ResponseStatus(code = HttpStatus.BAD_REQUEST,reason = "@ResponseStatus自定义异常")
 public class AServiceException extends Exception {
+
+    private String code;
+    private String msg;
+
+    public AServiceException(String code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 }

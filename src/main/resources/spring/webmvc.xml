@@ -22,6 +22,8 @@
 	<import resource="viewResolver.xml"/>
 	<!-- 异常解析组件 -->
 	<import resource="exceptionResolver.xml"/>
+    <!-- 文件上传解析组件 -->
+	<import resource="multipartResolver.xml"/>
 
 	<!-- 2.静态资源默认servlet配置
 		(1)加入对静态资源的处理：js,gif,png
@@ -33,6 +35,5 @@
 	 <!-- 4.扫描web相关的bean -->
 	 <context:component-scan base-package="com.xiu.web" />
 
-	 <!-- 文件上传解析组件 -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+
 </beans>
