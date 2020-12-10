@@ -12,25 +12,7 @@
 
 	<!-- 启用spring mvc 注解 -->
 	<context:annotation-config />
-	<!--<mvc:annotation-driven />-->
-
-	<!--处理器映射器 -->
-	<import resource="HandlerMapping.xml"/>
-	<!-- 处理器适配器 -->
-	<import resource="HandlerAdapter.xml"/>
-	<!-- 视图解析器 -->
-	<import resource="viewResolver.xml"/>
-	<!-- 异常解析组件 -->
-	<import resource="exceptionResolver.xml"/>
-    <!-- 文件上传解析组件 -->
-	<import resource="multipartResolver.xml"/>
-
-	<!-- 2.静态资源默认servlet配置
-		(1)加入对静态资源的处理：js,gif,png
-		(2)允许使用"/"做整体映射
-	 -->
-	 <!--<mvc:default-servlet-handler/>-->
-
+	<mvc:annotation-driven />
 
 	 <!-- 4.扫描web相关的bean -->
 	 <context:component-scan base-package="com.xiu.web" />

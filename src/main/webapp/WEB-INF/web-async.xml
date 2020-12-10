@@ -6,7 +6,8 @@
 	<servlet>
 		<servlet-name>asyncServlet</servlet-name>
 		<servlet-class>com.xiu.async.servlet.AsyncServlet</servlet-class>
-		<!--<async-supported>true</async-supported>-->
+		<!-- 开启servlet的异步请求操作 -->
+		<async-supported>true</async-supported>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>asyncServlet</servlet-name>
